@@ -4,7 +4,7 @@
 <div class="container">
    <div class="row justify-content-center">
        <div class="col-md-3">
-           <img class="rounded-circle" width="150" src="{{ $profile->image }}">
+           <img class="rounded-circle" width="150" src="/{{ $profile->image }}">
        </div>
        <div class="col-md-9">
            <h3>{{ $user->name }}</h3>
@@ -27,7 +27,7 @@
         @foreach($posts as $post)
             <div class="col-4 mb-5">
                 <a href="/post/{{$post->id}}">
-                    <img src="/storage/{{$post->image}}" class="w-100">
+                    <img src="/{{$post->image}}" class="w-100">
                 </a>
             </div>
         @endforeach
