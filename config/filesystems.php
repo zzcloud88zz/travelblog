@@ -51,7 +51,7 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => public_path(),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL').'http://travelblog-me.herokuapp.com/uploads/',
             'visibility' => 'public',
         ],
 

@@ -4,7 +4,7 @@
 <div class="container">
    <div class="row justify-content-center">
        <div class="col-md-3">
-           <img class="rounded-circle" width="150" src="/{{ $profile->image }}">
+           <img class="rounded-circle" width="150" src="http://travelblog-me.herokuapp.com/uploads/{{ $profile->image }}">
        </div>
        <div class="col-md-9">
            <h3>{{ $user->name }}</h3>
