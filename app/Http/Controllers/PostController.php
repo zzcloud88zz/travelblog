@@ -38,6 +38,7 @@ class PostController extends Controller
     {
         $data = request()->validate([
             'caption' => 'required',
+            'story' => 'required',
             'postpic' => ['required', 'image'],
         ]);
  
@@ -47,6 +48,7 @@ class PostController extends Controller
  
         $profile->user_id = $user->id;
         $profile->caption = request('caption');
+        $profile->story = request('story');
         $profile->image = $imagePath;
         $saved = $profile->save();
  
@@ -80,7 +82,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $post = Post::find($post->id);
+        return view('post.edit')->with('post', $post);
     }
 
     /**
@@ -92,7 +95,27 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $data = request()->validate([
+            'caption' => 'required',
+            'story' => 'required',
+            'postpic' => 'image',
+        ]);
+        
+        $user = Auth::user();
+        $profile = Post::find($post->id);
+
+        if (request()->has('postpic')) {
+        $imagePath = request('postpic')->store('images', 'public');
+        $profile->image = $imagePath;
+        }
+        $profile->caption = request('caption');
+        $profile->story = request('story');
+        $saved = $profile->save();
+ 
+        if ($saved) {
+            $post = Post::find($post->id);
+            return view('post.show', ['post' => $post, 'user' => $user]);
+        }
     }
 
     /**
@@ -103,6 +126,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post = Post::find($post->id);
+        $post->delete();
+        return redirect('/profile');
     }
 }

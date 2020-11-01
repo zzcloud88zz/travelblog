@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-4"></div>
             <div class="col-4">
-                <form action="{{ route('profile.postEdit') }}" enctype="multipart/form-data" method="post">
+                <form action="{{ route('profile.postCreate') }}" enctype="multipart/form-data" method="post">
                     @csrf
                     <div class="form-group row">
                         <label for="description">Description</label>
@@ -18,9 +18,12 @@
                     </div>
 
                     <div class="form-group row">
-                        <button type="submit" class="btn btn-primary">Create profile</button>
+                        <button type="submit" class="btn btn-primary">Edit profile</button>
                     </div>
                 </form>
+                <div class="form-group row">
+                    <button type="submit" class="btn btn-primary" onclick="window.location='{{ route('profile') }}'" style="background-color: darkred; border-color: darkred">Cancel</button>
+                </div>
             </div>
             <div class="col-4"></div>
         </div>

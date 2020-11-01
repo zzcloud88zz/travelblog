@@ -11,7 +11,9 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <script src="{{ asset('js/fairyDustCursor.js') }}"></script>
+    <script async src="{{ asset('js/index.js') }}"></script>
+    
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -50,6 +52,12 @@
                             @endif
                         @else
                             <li class="nav-item">
+                                <button type="submit" class="btn btn-primary" style="background: skyblue; border-color: white" id="weather">Weather</button>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('profile') }}">Profile</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('post.create') }}">Create post</a>
                             </li>
                             <li class="nav-item dropdown">
@@ -58,12 +66,12 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <!-- log out -->
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>

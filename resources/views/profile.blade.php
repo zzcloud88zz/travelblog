@@ -27,7 +27,8 @@
         @foreach($posts as $post)
             <div class="col-4 mb-5">
                 <a href="/post/{{$post->id}}">
-                    <img src="/{{$post->image}}" class="w-100">
+                    <img src="/{{$post->image}}" class="w-100"><br>
+                    <p>{{$post->caption}}</p><hr>
                 </a>
             </div>
         @endforeach

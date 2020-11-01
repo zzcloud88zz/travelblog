@@ -37346,3 +37346,21 @@ module.exports = __webpack_require__(/*! C:\Users\SR\Desktop\travelblog\resource
 /***/ })
 
 /******/ });
+
+$(document).ready(function(){
+  $("#weather").click(function(){
+      let reqURL = 'https://api.data.gov.sg/v1/environment/air-temperature'
+      let request = new XMLHttpRequest(); 
+      request.open('GET', reqURL);
+      request.responseType = 'json';
+      request.send();
+      request.onload = function() {
+        alert(
+          "Station ID: " + JSON.stringify(request.response.metadata.stations[0].id) + "\n" +
+          "Station: " + JSON.stringify(request.response.metadata.stations[0].name) + "\n" +
+          "Time: " + JSON.stringify(request.response.items[0].timestamp) + "\n" +
+          "Temperature: " + JSON.stringify(request.response.items[0].readings[0].value) + "°C"
+          );
+      }
+  });
+});

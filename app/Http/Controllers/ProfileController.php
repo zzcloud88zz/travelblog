@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Profile;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -61,7 +62,7 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         $profile = Profile::where('user_id', $user->id)->first();
-        return view('createProfile', [
+        return view('editProfile', [
             'profile' => $profile
         ]);
     }
@@ -74,5 +75,6 @@ class ProfileController extends Controller
     
         $user = Auth::user();
         $profile = Profile::where('user_id', $user->id)->first();
-    }    
+    }
+
 }
